@@ -1,4 +1,4 @@
-import { hasStatusCodeErrorInstance } from '../../../../core/infra/StatusCodeError'
+import { hasStatusCodeErrorInstance } from '@core/infra/StatusCodeError'
 
 type ApolloServerPlugin = import('apollo-server-express').Config['plugins'][number]
 

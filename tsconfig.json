@@ -6,10 +6,10 @@
     "baseUrl": "./src",
     "outDir": "./dist",
     "paths": {
-      "@modules/*": ["modules/*"],
-      "@config/*": ["config/*"],
-      "@shared/*": ["shared/*"],
+      "@application/*": ["application/*"],
       "@core/*": ["core/*"],
+      "@domain/*": ["domain/*"],
+      "@infra/*": ["infra/*"],
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,
@@ -17,8 +17,5 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
-  },
-  "watchOptions": {
-    "excludeDirectories": ["./node_modules"]
   }
 }

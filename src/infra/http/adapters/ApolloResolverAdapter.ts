@@ -1,12 +1,13 @@
-import { Controller } from "../../../core/infra/Controller";
+import { Controller } from "@core/infra/Controller";
 import {
   ClientError,
   ConflictError,
   ForbiddenError,
   NotFoundError,
   TooManyError,
-  UnauthorizedError
-} from "../../../core/infra/StatusCodeError";
+  UnauthorizedError,
+  InternalServerError
+} from "@core/infra/StatusCodeError";
 
 export const adaptResolver = async (controller: Controller, args?: any, context?: any) => {
   const requestData = {
@@ -33,6 +34,6 @@ export const adaptResolver = async (controller: Controller, args?: any, context?
     case 429:
       throw new TooManyError(httpResponse.body.error)
     default:
-      throw new Error(httpResponse.body.error)
+      throw new InternalServerError(httpResponse.body.error)
   }
 }

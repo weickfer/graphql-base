@@ -1,4 +1,4 @@
-import { BaseEntity } from "../../core/domain/BaseEntity";
+import { BaseEntity } from "@core/domain/BaseEntity";
 
 type UserProps = {
   id?: string

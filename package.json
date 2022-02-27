@@ -4,19 +4,22 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd src/infra/http/app.ts"
+    "dev": "tsnd --respawn --transpile-only --ignore-watch node_modules --exit-child --clear -r tsconfig-paths/register src/infra/http/app.ts"
   },
   "dependencies": {
     "@graphql-tools/schema": "^8.3.2",
     "apollo-server-express": "^3.6.3",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.3",
     "express-graphql": "^0.12.0",
     "graphql": "^15.5.1",
     "graphql-scalars": "^1.14.1"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/graphql": "^14.5.0",
     "ts-node-dev": "^1.1.8",
+    "tsconfig-paths": "^3.12.0",
     "typescript": "^4.3.5"
   }
 }

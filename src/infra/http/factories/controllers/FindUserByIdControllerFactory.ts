@@ -1,9 +1,9 @@
-import { Controller } from "../../../../core/infra/Controller";
-import { getUsersRepository } from '../../../container'
+import { Controller } from "@core/infra/Controller";
+import { getUsersRepository } from '@infra/container'
 import {
   FindUserByIdUseCase,
   FindUserByIdController,
-} from '../../../../application/useCases/FindUserById'
+} from '@application/useCases/users/FindUserById'
 
 
 export const makeFindUserByIdController = (): Controller => {

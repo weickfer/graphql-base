@@ -1,5 +1,5 @@
-import { UserNotExists } from "../../errors/UserNotExists"
-import { IUsersRepository } from "../../../infra/database/contracts/IUsersRepository"
+import { UserNotExists } from "@application/errors/UserNotExists"
+import { IUsersRepository } from "@infra/database/contracts/IUsersRepository"
 
 type IRequest = {
   id: string

@@ -1,5 +1,6 @@
-import { User } from "../../../domain/entities/user";
-import { IUsersRepository } from "../../../infra/database/contracts/IUsersRepository";
+import { hash } from 'bcryptjs'
+import { User } from "@domain/entities/user";
+import { IUsersRepository } from "@infra/database/contracts/IUsersRepository";
 
 import { EmailAlreadyExistsError } from "./errors/EmailAlreadyExists";
 
@@ -22,7 +23,7 @@ export class RegisterUserUseCase {
     const user = new User({
       name: data.name,
       email: data.email,
-      password: data.password,
+      password: await hash(data.password, 8),
     })
 
 
