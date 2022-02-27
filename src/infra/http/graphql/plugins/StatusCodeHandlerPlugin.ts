@@ -1,23 +1,20 @@
-import { Config } from 'apollo-server-express'
+import { hasStatusCodeErrorInstance } from '../../../../core/infra/StatusCodeError'
 
-export const StatusCodeHandlerPlugin: Config['plugins'][0] = {
+type ApolloServerPlugin = import('apollo-server-express').Config['plugins'][number]
+
+export const StatusCodeHandlerPlugin: ApolloServerPlugin = {
   requestDidStart: async () => ({
     willSendResponse: async ({ response, errors }) => {
       errors?.forEach(error => {
         response.data = undefined
 
-        const errorName = error.originalError?.name || error.name
-        const statusCodes = {
-          ClientError: 400,
-          UnauthorizedError: 401,
-          ForbiddenError: 403,
-          NotFoundError: 404,
-          ConflictError: 409,
-          TooManyError: 429,
-          InternalServerError: 500,
-        }
+        if (hasStatusCodeErrorInstance(error.originalError)) {
+          const { statusCode } = error.originalError
 
-        response.http.status = statusCodes[errorName || 'InternalServerError']
+          response.http.status = statusCode
+        } else {
+          response.http.status = 500
+        }
       })
     }
   })

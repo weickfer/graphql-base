@@ -1,4 +1,4 @@
-import { conflict, ok } from "../../../core/infra/HttpResponse";
+import { HttpResponse, conflict, ok } from "../../../core/infra/HttpResponse";
 import { RegisterUserUseCase } from "./RegisterUserUseCase";
 
 type IRequest = {
@@ -10,7 +10,7 @@ type IRequest = {
 export class RegisterUserController {
   constructor(private registerUser: RegisterUserUseCase) { }
 
-  public async handle({ name, email, password }: IRequest) {
+  public async handle({ name, email, password }: IRequest): Promise<HttpResponse> {
     const result = await this.registerUser.execute({
       name,
       email,

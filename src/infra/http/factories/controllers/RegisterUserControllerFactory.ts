@@ -1,9 +1,9 @@
+import { Controller } from '../../../../core/infra/Controller'
 import { getUsersRepository } from '../../../container'
 import {
   RegisterUserUseCase,
   RegisterUserController,
 } from '../../../../application/useCases/RegisterUser'
-import { Controller } from '../../../../core/infra/Controller'
 
 export const makeRegisterUserController = (): Controller => {
   const usersRepository = getUsersRepository()

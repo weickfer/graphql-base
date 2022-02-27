@@ -18,6 +18,10 @@ export const UserDef = gql`
     password: String!
   }
 
+  extend type Query {
+    findUserById(userId: String!): User!
+  }
+
   extend type Mutation {
     registerUser(data: RegisterUserInput): User
   }

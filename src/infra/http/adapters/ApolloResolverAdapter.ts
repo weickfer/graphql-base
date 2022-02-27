@@ -6,7 +6,7 @@ import {
   NotFoundError,
   TooManyError,
   UnauthorizedError
-} from "../graphql/errors";
+} from "../../../core/infra/StatusCodeError";
 
 export const adaptResolver = async (controller: Controller, args?: any, context?: any) => {
   const requestData = {
