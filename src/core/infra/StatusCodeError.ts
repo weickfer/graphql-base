@@ -1,9 +1,5 @@
 export function hasStatusCodeErrorInstance(error: Error): error is StatusCodeError {
-  if (Object.keys(error).includes('statusCode')) {
-    return true
-  }
-
-  return false
+  return Object.keys(error).includes('statusCode')
 }
 
 export abstract class StatusCodeError extends Error {
@@ -52,14 +48,14 @@ export class TooManyError extends StatusCodeError {
 
 export class UnauthorizedError extends StatusCodeError {
   constructor(message: string) {
-    super(message, 500)
+    super(message, 401)
     this.name = 'UnauthorizedError'
   }
 }
 
 export class InternalServerError extends StatusCodeError {
-  constructor(message: string) {
-    super(message, 500)
+  constructor() {
+    super('Internal Server Error', 500)
     this.name = 'InternalServerError'
   }
 }

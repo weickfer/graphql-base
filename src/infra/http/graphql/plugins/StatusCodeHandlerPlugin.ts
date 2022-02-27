@@ -5,9 +5,9 @@ type ApolloServerPlugin = import('apollo-server-express').Config['plugins'][numb
 export const StatusCodeHandlerPlugin: ApolloServerPlugin = {
   requestDidStart: async () => ({
     willSendResponse: async ({ response, errors }) => {
-      errors?.forEach(error => {
-        response.data = undefined
+      response.data = undefined
 
+      errors?.forEach(error => {
         if (hasStatusCodeErrorInstance(error.originalError)) {
           const { statusCode } = error.originalError
 

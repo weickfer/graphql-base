@@ -34,6 +34,6 @@ export const adaptResolver = async (controller: Controller, args?: any, context?
     case 429:
       throw new TooManyError(httpResponse.body.error)
     default:
-      throw new InternalServerError(httpResponse.body.error)
+      throw new InternalServerError()
   }
 }

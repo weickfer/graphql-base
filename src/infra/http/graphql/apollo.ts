@@ -1,3 +1,4 @@
+import { hasStatusCodeErrorInstance, InternalServerError } from '@core/infra/StatusCodeError';
 import { ApolloServer } from 'apollo-server-express';
 import { makeExecutableSchema } from '@graphql-tools/schema'
 

@@ -3,11 +3,13 @@ import { makeAuthenticateUserController } from "../../factories/controllers/Auth
 import { makeFindUserByIdController } from '../../factories/controllers/FindUserByIdControllerFactory';
 import { makeListAllUsersUseCase } from '../../factories/controllers/ListAllUsersControllerFactory';
 import { makeRegisterUserController } from '../../factories/controllers/RegisterUserControllerFactory'
+import { makeUpdateUserByIdController } from "../../factories/controllers/UpdateUserByIdControllerFactory";
 
 const authenticateUserController = makeAuthenticateUserController()
 const findUserByIdController = makeFindUserByIdController()
 const registerUserController = makeRegisterUserController()
 const listAllUsersController = makeListAllUsersUseCase()
+const updateUserByIdController = makeUpdateUserByIdController()
 
 export const UserResolver = {
   Query: {
@@ -20,6 +22,7 @@ export const UserResolver = {
       await adaptResolver(registerUserController, args)
 
       return adaptResolver(authenticateUserController, args)
-    }
+    },
+    updateUserById: (_, args: any) => adaptResolver(updateUserByIdController, args)
   },
 }
